@@ -1,0 +1,4 @@
+===========================================
+:: Version        :: ${ACTIVE_VERSION}
+:: Active Profile :: ${spring.profiles.active}
+===========================================

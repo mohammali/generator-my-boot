@@ -1,0 +1,55 @@
+spring:
+  profiles:
+    active: ${ACTIVE_PROFILES:dev}
+
+  application:
+    name: <%= appName %>
+
+  flyway:
+    schemas: 2.x.x
+
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        default_schema: public
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: <%= dbUser %>
+    password: <%= dbPassword %>
+    url: jdbc:postgresql://host.docker.internal/<%= dbName %>
+
+  liquibase:
+    change-log: "classpath:db/changelog.xml"
+  http:
+    converters:
+      preferred-json-mapper: jackson
+
+#JWT Configuration
+jwt:
+  secretKey: "uZTKGHTocYpVMRRwimepOtqnP2V1PAB5"
+  expirationTime: 24 # time in hours
+
+
+application:
+  version: "${ACTIVE_VERSION:non}"
+  logFile: "log/${spring.application.name}.log"
+
+# Swagger
+swagger:
+  service:
+    version: ${application.version}
+    title: ${spring.application.name}
+    description: ""
+    termsPath: ""
+    email: "mohammali-@hotmail.com"
+    licenceType: ""
+    licencePath: ""
+
+server:
+  port: 8080

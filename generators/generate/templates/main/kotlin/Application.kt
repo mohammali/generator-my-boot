@@ -1,11 +1,13 @@
 package <%= packageSignature %>
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.runApplication
 
+@ConfigurationPropertiesScan
 @SpringBootApplication
-class Application
+class Main
 
 fun main(args: Array<String>) {
-  runApplication<Application>(*args)
+  runApplication<Main>(*args)
 }
